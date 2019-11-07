@@ -17,5 +17,8 @@
     <img alt="" src="./resources/images/maincat.jpg">
 	<a href="./test">Go Test</a>
 	<a href="./notice/noticeList">Notice List</a>
+	
+	<a href ="./member/memberJoin?">Member Join</a>
+		<a href = "./member/memberLogin">Member Login</a>
 </body>
 </html>
