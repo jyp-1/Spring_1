@@ -1,4 +1,4 @@
-package com.jy.s1.notice;
+package com.jy.notice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,15 +6,25 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jy.utill.DBConnector;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
+
+
+@Repository
 public class NoticeDAO {
-
+		
+		@Inject
+		private DataSource dataSource;
+	
+	
 	// List
 
 	public List<NoticeDTO> noticeList() throws Exception {
 		ArrayList<NoticeDTO> ar = new ArrayList<NoticeDTO>();
-		Connection con = DBConnector.getConnection();
+		Connection con = dataSource.getConnection();
 		String sql = "select * from notice order by num desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
@@ -40,7 +50,7 @@ public class NoticeDAO {
 	//select
 	public NoticeDTO noticeSelect(int num)throws Exception{
 		NoticeDTO noticeDTO = null;
-		Connection con = DBConnector.getConnection();
+		Connection con = dataSource.getConnection();
 		String sql = "select * from notice where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -68,7 +78,7 @@ public class NoticeDAO {
 	//write
 	public void noticeWrite() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
-		Connection con = DBConnector.getConnection();
+		Connection con = dataSource.getConnection();
 		String sql ="insert into notice value board_seq.nextval,?,?,?,sysdate,0";
 		PreparedStatement st = con.prepareStatement(sql);
 	}
