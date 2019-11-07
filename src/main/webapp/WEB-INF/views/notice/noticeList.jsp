@@ -35,6 +35,8 @@
 			</c:forEach>
 
 		</table>
+		
+			<a href="">Write</a>
 
 	</div>
 	</div>

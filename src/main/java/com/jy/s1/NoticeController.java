@@ -2,6 +2,7 @@ package com.jy.s1;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,11 +21,12 @@ import com.jy.s1.notice.NoticeService;
 @RequestMapping("/notice/**")
 public class NoticeController {
 	
+	@Inject
 	private NoticeService noticeService;
-	public NoticeController() {
-		noticeService = new NoticeService();
-	}
-
+	
+	
+	
+	
 	//Write -Post
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public String noticeWrite(NoticeDTO noticeDTO) {
